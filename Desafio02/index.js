@@ -1,9 +1,7 @@
-var calculate = () =>{
-    let qty = Number(document.getElementById("quantity").value);
-    let result = [];
-    result[0] = 0;
-    for(var i = 1; i<qty; i++){
-        result.push(result.length > 1 ? result[i-2] + result[i-1] : 1);
-    }
-    document.getElementById("results").innerText = result.join(' ');
+var calculate = () => {
+    const qty = Number(document.getElementById("quantity").value);
+    let result = Array.from({ length: qty }).reduce(
+        (pre, _, idx) => pre.concat(idx > 1 ? pre[idx - 1] + pre[idx - 2] : idx), []);
+    
+        document.getElementById("results").innerText = result.join(' ');
 }
